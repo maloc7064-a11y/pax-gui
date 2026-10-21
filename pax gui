@@ -1,0 +1,273 @@
+-- Gui to Lua
+-- Version: 3.2 (Paxgui F3X Edition)
+
+local player = game.Players.LocalPlayer
+local replicatedStorage = game:GetService("ReplicatedStorage")
+
+local f3xv1 = Instance.new("ScreenGui")
+f3xv1.Name = "f3xv1"
+f3xv1.Parent = player:WaitForChild("PlayerGui")
+f3xv1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+f3xv1.ResetOnSpawn = false
+
+-- === MOBİL AÇMA BUTONU ===
+local openBtn = Instance.new("TextButton")
+openBtn.Name = "ActivateGUIButton"
+openBtn.Size = UDim2.new(0, 130, 0, 40)
+openBtn.Position = UDim2.new(0, 10, 0.4, 0)
+openBtn.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+openBtn.BorderSizePixel = 2
+openBtn.BorderColor3 = Color3.fromRGB(255, 105, 180) -- Pembe Tema
+openBtn.Font = Enum.Font.SourceSansBold
+openBtn.Text = "ACTIVATE GUI"
+openBtn.TextColor3 = Color3.fromRGB(255, 105, 180)
+openBtn.TextSize = 15
+openBtn.Visible = false
+openBtn.Parent = f3xv1
+
+-- === ANA ÇERÇEVE ===
+local Frame = Instance.new("Frame")
+Frame.Parent = f3xv1
+Frame.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+Frame.BorderColor3 = Color3.fromRGB(255, 105, 180) -- Pembe Tema
+Frame.BorderSizePixel = 3
+Frame.Position = UDim2.new(0.25, 0, 0.15, 0)
+Frame.Size = UDim2.new(0, 590, 0, 500)
+Frame.Active = true
+Frame.Draggable = true
+
+-- Başlık
+local TextLabel = Instance.new("TextLabel")
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+TextLabel.BorderColor3 = Color3.fromRGB(255, 105, 180)
+TextLabel.BorderSizePixel = 3
+TextLabel.Position = UDim2.new(0, 0, 0, 0)
+TextLabel.Size = UDim2.new(1, -70, 0, 45)
+TextLabel.Font = Enum.Font.SourceSansBold
+TextLabel.Text = "Paxgui By Paxgui Team (v1 beta)"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 22
+
+-- Kapatma Butonu (CLOSE)
+local closeBtn = Instance.new("TextButton")
+closeBtn.Name = "CloseGUIButton"
+closeBtn.Parent = Frame
+closeBtn.BackgroundColor3 = Color3.fromRGB(40, 15, 25)
+closeBtn.BorderColor3 = Color3.fromRGB(255, 105, 180)
+closeBtn.BorderSizePixel = 3
+closeBtn.Position = UDim2.new(1, -70, 0, 0)
+closeBtn.Size = UDim2.new(0, 70, 0, 45)
+closeBtn.Font = Enum.Font.SourceSansBold
+closeBtn.Text = "CLOSE"
+closeBtn.TextColor3 = Color3.fromRGB(255, 105, 180)
+closeBtn.TextSize = 16
+
+closeBtn.MouseButton1Click:Connect(function()
+	Frame.Visible = false
+	openBtn.Visible = true
+end)
+
+openBtn.MouseButton1Click:Connect(function()
+	Frame.Visible = true
+	openBtn.Visible = false
+end)
+
+-- Alt Bilgi
+local TextLabel_2 = Instance.new("TextLabel")
+TextLabel_2.Parent = Frame
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+TextLabel_2.BorderColor3 = Color3.fromRGB(255, 105, 180)
+TextLabel_2.BorderSizePixel = 1
+TextLabel_2.Position = UDim2.new(0, 0, 0, 45)
+TextLabel_2.Size = UDim2.new(1, 0, 0, 30)
+TextLabel_2.Font = Enum.Font.SourceSans
+TextLabel_2.Text = "F3X Tools, Decals & World Controls"
+TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.TextSize = 18
+
+-- Kaydırma Alanı
+local scrollingFrame = Instance.new("ScrollingFrame")
+scrollingFrame.Parent = Frame
+scrollingFrame.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+scrollingFrame.BorderColor3 = Color3.fromRGB(255, 105, 180)
+scrollingFrame.BorderSizePixel = 1
+scrollingFrame.Position = UDim2.new(0, 5, 0, 80)
+scrollingFrame.Size = UDim2.new(1, -10, 1, -90)
+scrollingFrame.ScrollBarThickness = 8
+scrollingFrame.CanvasSize = UDim2.new(0, 0, 2.5, 0)
+
+-- Buton Oluşturucu
+local function createButton(name, x, y, callback)
+	local btn = Instance.new("TextButton")
+	btn.Parent = scrollingFrame
+	btn.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	btn.BorderColor3 = Color3.fromRGB(255, 105, 180)
+	btn.BorderSizePixel = 2
+	btn.Position = UDim2.new(0, x, 0, y)
+	btn.Size = UDim2.new(0, 130, 0, 40)
+	btn.Font = Enum.Font.SourceSans
+	btn.Text = name
+	btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+	btn.TextSize = 14
+	btn.TextWrapped = true
+	btn.MouseButton1Click:Connect(callback)
+end
+
+-- Görsel ID (Görseldeki ID: 1000101913)[span_1](start_span)[span_1](end_span)
+local assetId = "1000101913"
+
+-- === 1. SKYBOX BUTONU ===
+createButton("Apply Skybox", 5, 5, function()
+	local lighting = game:GetService("Lighting")
+	for _, child in ipairs(lighting:GetChildren()) do
+		if child:IsA("Sky") or child:IsA("Atmosphere") then
+			child:Destroy()
+		end
+	end
+	local sky = Instance.new("Sky")
+	sky.Name = "PaxSky"
+	local tex = "http://www.roblox.com/asset/?id=" .. assetId
+	sky.SkyboxBk = tex
+	sky.SkyboxDn = tex
+	sky.SkyboxFt = tex
+	sky.SkyboxLf = tex
+	sky.SkyboxRt = tex
+	sky.SkyboxUp = tex
+	sky.Parent = lighting
+end)
+
+-- === 2. DECAL SPAM BUTONU (F3X SyncAPI Entegrasyonlu) ===
+createButton("Apply Decal", 145, 5, function()
+	local tool
+	for _, v in ipairs(player:GetDescendants()) do
+		if v.Name == "SyncAPI" then
+			tool = v.Parent
+			break
+		end
+	end
+	if not tool then
+		for _, v in ipairs(game.ReplicatedStorage:GetDescendants()) do
+			if v.Name == "SyncAPI" then
+				tool = v.Parent
+				break
+			end
+		end
+	end
+	if not tool then return end
+	
+	local remote = tool.SyncAPI.ServerEndpoint
+	local function invoke(args)
+		remote:InvokeServer(unpack(args))
+	end
+	
+	for _, v in ipairs(workspace:GetDescendants()) do
+		if v:IsA("BasePart") then
+			task.spawn(function()
+				invoke({"SetLocked", {v}, false})
+				for _, face in ipairs({Enum.NormalId.Front, Enum.NormalId.Back, Enum.NormalId.Left, Enum.NormalId.Right, Enum.NormalId.Top, Enum.NormalId.Bottom}) do
+					invoke({"CreateTextures", {{Part = v, Face = face, TextureType = "Decal"}}})
+					invoke({"SyncTexture", {{Part = v, Face = face, TextureType = "Decal", Texture = "rbxassetid://" .. assetId}}})
+				end
+			end)
+		end
+	end
+end)
+
+-- === 3. BTOOLS ===
+createButton("Btools", 285, 5, function()
+	local btools = Instance.new("HopperBin")
+	btools.BinType = Enum.BinType.Hammer
+	btools.Parent = player.Backpack
+	local btools2 = Instance.new("HopperBin")
+	btools2.BinType = Enum.BinType.Clone
+	btools2.Parent = player.Backpack
+end)
+
+-- === 4. UNANCHOR ALL ===
+createButton("Unanchor All", 425, 5, function()
+	for _, v in ipairs(workspace:GetDescendants()) do
+		if v:IsA("BasePart") then
+			v.Anchored = false
+		end
+	end
+end)
+
+-- === 5. BASEPLATE ===
+createButton("Baseplate", 5, 55, function()
+	local bp = Instance.new("Part")
+	bp.Size = Vector3.new(1000, 1, 1000)
+	bp.Position = Vector3.new(0, 0, 0)
+	bp.Anchored = true
+	bp.BrickColor = BrickColor.new("Bright pink")
+	bp.Parent = workspace
+end)
+
+-- === 6. FIRE EFFECT ===
+createButton("Fire Effect", 145, 55, function()
+	for _, v in ipairs(workspace:GetDescendants()) do
+		if v:IsA("BasePart") then
+			Instance.new("Fire", v)
+		end
+	end
+end)
+
+-- === 7. DISCO FOG ===
+createButton("Disco Fog", 285, 55, function()
+	task.spawn(function()
+		local lighting = game:GetService("Lighting")
+		lighting.FogEnabled = true
+		while true do
+			lighting.FogColor = Color3.fromRGB(math.random(0,255), math.random(0,255), math.random(0,255))
+			task.wait(0.5)
+		end
+	end)
+end)
+
+-- MÜZİK BUTONLARI FONKSİYONU
+local function createMusicBtn(name, id, pitch, x, y)
+	local btn = Instance.new("TextButton")
+	btn.Parent = scrollingFrame
+	btn.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	btn.BorderColor3 = Color3.fromRGB(255, 105, 180)
+	btn.BorderSizePixel = 1
+	btn.Position = UDim2.new(0, x, 0, y)
+	btn.Size = UDim2.new(0, 130, 0, 40)
+	btn.Font = Enum.Font.SourceSans
+	btn.Text = name
+	btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+	btn.TextSize = 15
+	btn.TextWrapped = true
+
+	btn.MouseButton1Click:Connect(function()
+		local hdAdmin = replicatedStorage:FindFirstChild("HDAdminClient") or replicatedStorage:FindFirstChild("HDAdminHDClient")
+		if hdAdmin and hdAdmin:FindFirstChild("Signals") and hdAdmin.Signals:FindFirstChild("RequestCommand") then
+			hdAdmin.Signals.RequestCommand:InvokeServer(";music " .. tostring(id))
+			if pitch then
+				hdAdmin.Signals.RequestCommand:InvokeServer(";pitch " .. tostring(pitch))
+			end
+			hdAdmin.Signals.RequestCommand:InvokeServer(";volume inf")
+		end
+	end)
+end
+
+-- Müzik Listesi
+createMusicBtn("theme v3", "1842652230", 0.45, 425, 55)
+createMusicBtn("better off alone", "138194554038974", 0.21, 5, 105)
+createMusicBtn("Electro sp00k", "99986264226275", 0.2, 145, 105)
+createMusicBtn("opening theme", "0x78189076c691", 0.3, 285, 105)
+createMusicBtn("Jumpstyle", "1839246711", nil, 425, 105)
+createMusicBtn("gui sound", "78973045684083", 0.3, 5, 155)
+createMusicBtn("WONGA", "100792696468630", 0.143, 145, 155)
+createMusicBtn("lois holy fuck", "105819456196233", 0.29, 285, 155)
+createMusicBtn("trump tank", "89293274845575", 0.25, 425, 155)
+createMusicBtn("butt hole", "130110858306036", 0.12, 5, 205)
+createMusicBtn("lavender town", "85789014973504", 0.16, 145, 205)
+createMusicBtn("trololo", "8389041427", nil, 285, 205)
+createMusicBtn("horror", "13061809", 0.2, 425, 205)
+createMusicBtn("TROLLED!!", "112626671704099", 0.2, 5, 255)
+createMusicBtn("black say?", "89441845224124", 0.168, 145, 255)
+createMusicBtn("SMOKE WEED", "6717030010", nil, 285, 255)
+createMusicBtn("Won't stop us", "1847661821", nil, 425, 255)
+createMusicBtn("cancan", "1840194801", 1.3, 5, 305)
+createMusicBtn("gangsta paradise", "6070263388", nil, 145, 305)
