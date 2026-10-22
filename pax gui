@@ -1,273 +1,505 @@
 -- Gui to Lua
--- Version: 3.2 (Paxgui F3X Edition)
+-- Version: 3.2
 
-local player = game.Players.LocalPlayer
-local replicatedStorage = game:GetService("ReplicatedStorage")
+-- Instances:
 
 local f3xv1 = Instance.new("ScreenGui")
+local ToggleButton = Instance.new("TextButton")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local TextLabel_2 = Instance.new("TextLabel")
+local ImageLabel = Instance.new("ImageLabel")
+local TextButton = Instance.new("TextButton")
+local TextButton_2 = Instance.new("TextButton")
+local TextButton_3 = Instance.new("TextButton")
+local TextButton_4 = Instance.new("TextButton")
+local TextButton_5 = Instance.new("TextButton")
+local TextButton_6 = Instance.new("TextButton")
+local TextButton_7 = Instance.new("TextButton")
+local TextButton_8 = Instance.new("TextButton")
+local ImageLabel_2 = Instance.new("ImageLabel")
+local TextButton_9 = Instance.new("TextButton")
+local TextButton_10 = Instance.new("TextButton")
+local TextButton_11 = Instance.new("TextButton")
+local TextButton_12 = Instance.new("TextButton")
+
+--Properties:
+
 f3xv1.Name = "f3xv1"
-f3xv1.Parent = player:WaitForChild("PlayerGui")
+f3xv1.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 f3xv1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 f3xv1.ResetOnSpawn = false
 
--- === MOBİL AÇMA BUTONU ===
-local openBtn = Instance.new("TextButton")
-openBtn.Name = "ActivateGUIButton"
-openBtn.Size = UDim2.new(0, 130, 0, 40)
-openBtn.Position = UDim2.new(0, 10, 0.4, 0)
-openBtn.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-openBtn.BorderSizePixel = 2
-openBtn.BorderColor3 = Color3.fromRGB(255, 105, 180) -- Pembe Tema
-openBtn.Font = Enum.Font.SourceSansBold
-openBtn.Text = "ACTIVATE GUI"
-openBtn.TextColor3 = Color3.fromRGB(255, 105, 180)
-openBtn.TextSize = 15
-openBtn.Visible = false
-openBtn.Parent = f3xv1
+-- Mobil İçin Açma / Kapama Tuşu (Sol Üst - Menülerin Altında)
+ToggleButton.Parent = f3xv1
+ToggleButton.BackgroundColor3 = Color3.fromRGB(40, 0, 30)
+ToggleButton.BorderColor3 = Color3.fromRGB(255, 105, 180)
+ToggleButton.BorderSizePixel = 4
+ToggleButton.Position = UDim2.new(0.02, 0, 0.12, 0)
+ToggleButton.Size = UDim2.new(0, 90, 0, 45)
+ToggleButton.Font = Enum.Font.Creepster
+ToggleButton.Text = "PAX"
+ToggleButton.TextColor3 = Color3.fromRGB(255, 105, 180)
+ToggleButton.TextSize = 28.000
 
--- === ANA ÇERÇEVE ===
-local Frame = Instance.new("Frame")
+-- Ana Frame (Tam Ortada)
 Frame.Parent = f3xv1
-Frame.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
-Frame.BorderColor3 = Color3.fromRGB(255, 105, 180) -- Pembe Tema
-Frame.BorderSizePixel = 3
-Frame.Position = UDim2.new(0.25, 0, 0.15, 0)
-Frame.Size = UDim2.new(0, 590, 0, 500)
-Frame.Active = true
-Frame.Draggable = true
+Frame.BackgroundColor3 = Color3.fromRGB(20, 0, 15)
+Frame.BorderColor3 = Color3.fromRGB(255, 105, 180)
+Frame.BorderSizePixel = 7
+Frame.AnchorPoint = Vector2.new(0.5, 0.5)
+Frame.Position = UDim2.new(0.5, 0, 0.5, 0)
+Frame.Size = UDim2.new(0, 436, 0, 414)
+Frame.Visible = true
 
--- Başlık
-local TextLabel = Instance.new("TextLabel")
 TextLabel.Parent = Frame
-TextLabel.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+TextLabel.BackgroundColor3 = Color3.fromRGB(20, 0, 15)
 TextLabel.BorderColor3 = Color3.fromRGB(255, 105, 180)
-TextLabel.BorderSizePixel = 3
-TextLabel.Position = UDim2.new(0, 0, 0, 0)
-TextLabel.Size = UDim2.new(1, -70, 0, 45)
-TextLabel.Font = Enum.Font.SourceSansBold
-TextLabel.Text = "Paxgui By Paxgui Team (v1 beta)"
-TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.TextSize = 22
+TextLabel.BorderSizePixel = 7
+TextLabel.Position = UDim2.new(-0.0520498306, 0, -0.118902676, 0)
+TextLabel.Size = UDim2.new(0, 475, 0, 62)
+TextLabel.Font = Enum.Font.Creepster
+TextLabel.Text = ""
+TextLabel.TextColor3 = Color3.fromRGB(255, 105, 180)
+TextLabel.TextSize = 62.000
 
--- Kapatma Butonu (CLOSE)
-local closeBtn = Instance.new("TextButton")
-closeBtn.Name = "CloseGUIButton"
-closeBtn.Parent = Frame
-closeBtn.BackgroundColor3 = Color3.fromRGB(40, 15, 25)
-closeBtn.BorderColor3 = Color3.fromRGB(255, 105, 180)
-closeBtn.BorderSizePixel = 3
-closeBtn.Position = UDim2.new(1, -70, 0, 0)
-closeBtn.Size = UDim2.new(0, 70, 0, 45)
-closeBtn.Font = Enum.Font.SourceSansBold
-closeBtn.Text = "CLOSE"
-closeBtn.TextColor3 = Color3.fromRGB(255, 105, 180)
-closeBtn.TextSize = 16
-
-closeBtn.MouseButton1Click:Connect(function()
-	Frame.Visible = false
-	openBtn.Visible = true
-end)
-
-openBtn.MouseButton1Click:Connect(function()
-	Frame.Visible = true
-	openBtn.Visible = false
-end)
-
--- Alt Bilgi
-local TextLabel_2 = Instance.new("TextLabel")
 TextLabel_2.Parent = Frame
-TextLabel_2.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(20, 0, 15)
 TextLabel_2.BorderColor3 = Color3.fromRGB(255, 105, 180)
-TextLabel_2.BorderSizePixel = 1
-TextLabel_2.Position = UDim2.new(0, 0, 0, 45)
-TextLabel_2.Size = UDim2.new(1, 0, 0, 30)
-TextLabel_2.Font = Enum.Font.SourceSans
-TextLabel_2.Text = "F3X Tools, Decals & World Controls"
-TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_2.TextSize = 18
+TextLabel_2.BorderSizePixel = 7
+TextLabel_2.Position = UDim2.new(-0.0520498306, 0, 0.848301232, 0)
+TextLabel_2.Size = UDim2.new(0, 475, 0, 62)
+TextLabel_2.Font = Enum.Font.Creepster
+TextLabel_2.Text = ""
+TextLabel_2.TextColor3 = Color3.fromRGB(255, 105, 180)
+TextLabel_2.TextSize = 62.000
 
--- Kaydırma Alanı
-local scrollingFrame = Instance.new("ScrollingFrame")
-scrollingFrame.Parent = Frame
-scrollingFrame.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
-scrollingFrame.BorderColor3 = Color3.fromRGB(255, 105, 180)
-scrollingFrame.BorderSizePixel = 1
-scrollingFrame.Position = UDim2.new(0, 5, 0, 80)
-scrollingFrame.Size = UDim2.new(1, -10, 1, -90)
-scrollingFrame.ScrollBarThickness = 8
-scrollingFrame.CanvasSize = UDim2.new(0, 0, 2.5, 0)
+ImageLabel.Parent = Frame
+ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageLabel.BorderSizePixel = 0
+ImageLabel.Position = UDim2.new(0, 0, 0.0531400964, 0)
+ImageLabel.Size = UDim2.new(0, 436, 0, 337)
+ImageLabel.ZIndex = 0
+ImageLabel.Image = "rbxassetid://107279430040350"
 
--- Buton Oluşturucu
-local function createButton(name, x, y, callback)
-	local btn = Instance.new("TextButton")
-	btn.Parent = scrollingFrame
-	btn.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-	btn.BorderColor3 = Color3.fromRGB(255, 105, 180)
-	btn.BorderSizePixel = 2
-	btn.Position = UDim2.new(0, x, 0, y)
-	btn.Size = UDim2.new(0, 130, 0, 40)
-	btn.Font = Enum.Font.SourceSans
-	btn.Text = name
-	btn.TextColor3 = Color3.fromRGB(255, 255, 255)
-	btn.TextSize = 14
-	btn.TextWrapped = true
-	btn.MouseButton1Click:Connect(callback)
+TextButton.Parent = Frame
+TextButton.BackgroundColor3 = Color3.fromRGB(40, 0, 30)
+TextButton.BackgroundTransparency = 0.300
+TextButton.BorderColor3 = Color3.fromRGB(255, 105, 180)
+TextButton.BorderSizePixel = 5
+TextButton.Position = UDim2.new(0.0550458729, 0, 0.0939196125, 0)
+TextButton.Size = UDim2.new(0, 115, 0, 51)
+TextButton.Font = Enum.Font.Creepster
+TextButton.Text = "Sky"
+TextButton.TextColor3 = Color3.fromRGB(255, 105, 180)
+TextButton.TextSize = 30.000
+TextButton.TextWrapped = true
+
+TextButton_2.Parent = Frame
+TextButton_2.BackgroundColor3 = Color3.fromRGB(40, 0, 30)
+TextButton_2.BackgroundTransparency = 0.300
+TextButton_2.BorderColor3 = Color3.fromRGB(255, 105, 180)
+TextButton_2.BorderSizePixel = 5
+TextButton_2.Position = UDim2.new(0.366972476, 0, 0.0939196125, 0)
+TextButton_2.Size = UDim2.new(0, 115, 0, 51)
+TextButton_2.Font = Enum.Font.Creepster
+TextButton_2.Text = "Decal"
+TextButton_2.TextColor3 = Color3.fromRGB(255, 105, 180)
+TextButton_2.TextSize = 35.000
+TextButton_2.TextWrapped = true
+
+TextButton_3.Parent = Frame
+TextButton_3.BackgroundColor3 = Color3.fromRGB(40, 0, 30)
+TextButton_3.BackgroundTransparency = 0.300
+TextButton_3.BorderColor3 = Color3.fromRGB(255, 105, 180)
+TextButton_3.BorderSizePixel = 5
+TextButton_3.Position = UDim2.new(0.366972476, 0, 0.470731139, 0)
+TextButton_3.Size = UDim2.new(0, 115, 0, 51)
+TextButton_3.Font = Enum.Font.Creepster
+TextButton_3.Text = "Decal 3"
+TextButton_3.TextColor3 = Color3.fromRGB(255, 105, 180)
+TextButton_3.TextSize = 35.000
+TextButton_3.TextWrapped = true
+
+TextButton_4.Parent = Frame
+TextButton_4.BackgroundColor3 = Color3.fromRGB(40, 0, 30)
+TextButton_4.BackgroundTransparency = 0.300
+TextButton_4.BorderColor3 = Color3.fromRGB(255, 105, 180)
+TextButton_4.BorderSizePixel = 5
+TextButton_4.Position = UDim2.new(0.0550458729, 0, 0.470731139, 0)
+TextButton_4.Size = UDim2.new(0, 115, 0, 51)
+TextButton_4.Font = Enum.Font.Creepster
+TextButton_4.Text = "Sky 3"
+TextButton_4.TextColor3 = Color3.fromRGB(255, 105, 180)
+TextButton_4.TextSize = 25.000
+TextButton_4.TextWrapped = true
+
+TextButton_5.Parent = Frame
+TextButton_5.BackgroundColor3 = Color3.fromRGB(40, 0, 30)
+TextButton_5.BackgroundTransparency = 0.300
+TextButton_5.BorderColor3 = Color3.fromRGB(255, 105, 180)
+TextButton_5.BorderSizePixel = 5
+TextButton_5.Position = UDim2.new(0.0550458729, 0, 0.282325417, 0)
+TextButton_5.Size = UDim2.new(0, 115, 0, 51)
+TextButton_5.Font = Enum.Font.Creepster
+TextButton_5.Text = "Sky 2"
+TextButton_5.TextColor3 = Color3.fromRGB(255, 105, 180)
+TextButton_5.TextSize = 25.000
+TextButton_5.TextWrapped = true
+
+TextButton_6.Parent = Frame
+TextButton_6.BackgroundColor3 = Color3.fromRGB(40, 0, 30)
+TextButton_6.BackgroundTransparency = 0.300
+TextButton_6.BorderColor3 = Color3.fromRGB(255, 105, 180)
+TextButton_6.BorderSizePixel = 5
+TextButton_6.Position = UDim2.new(0.366972476, 0, 0.282325417, 0)
+TextButton_6.Size = UDim2.new(0, 115, 0, 51)
+TextButton_6.Font = Enum.Font.Creepster
+TextButton_6.Text = "Decal 2"
+TextButton_6.TextColor3 = Color3.fromRGB(255, 105, 180)
+TextButton_6.TextSize = 35.000
+TextButton_6.TextWrapped = true
+
+TextButton_7.Parent = Frame
+TextButton_7.BackgroundColor3 = Color3.fromRGB(40, 0, 30)
+TextButton_7.BackgroundTransparency = 0.300
+TextButton_7.BorderColor3 = Color3.fromRGB(255, 105, 180)
+TextButton_7.BorderSizePixel = 5
+TextButton_7.Position = UDim2.new(0.0550458729, 0, 0.659136951, 0)
+TextButton_7.Size = UDim2.new(0, 115, 0, 51)
+TextButton_7.Font = Enum.Font.Creepster
+TextButton_7.Text = "Sky 4"
+TextButton_7.TextColor3 = Color3.fromRGB(255, 105, 180)
+TextButton_7.TextSize = 25.000
+TextButton_7.TextWrapped = true
+
+TextButton_8.Parent = Frame
+TextButton_8.BackgroundColor3 = Color3.fromRGB(40, 0, 30)
+TextButton_8.BackgroundTransparency = 0.300
+TextButton_8.BorderColor3 = Color3.fromRGB(255, 105, 180)
+TextButton_8.BorderSizePixel = 5
+TextButton_8.Position = UDim2.new(0.366972476, 0, 0.659136951, 0)
+TextButton_8.Size = UDim2.new(0, 115, 0, 51)
+TextButton_8.Font = Enum.Font.Creepster
+TextButton_8.Text = "Decal 4"
+TextButton_8.TextColor3 = Color3.fromRGB(255, 105, 180)
+TextButton_8.TextSize = 35.000
+TextButton_8.TextWrapped = true
+
+ImageLabel_2.Parent = Frame
+ImageLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageLabel_2.BorderSizePixel = 0
+ImageLabel_2.Position = UDim2.new(-0.150028467, 0, -0.186446041, 0)
+ImageLabel_2.Size = UDim2.new(0, 100, 0, 100)
+ImageLabel_2.ZIndex = 2
+ImageLabel_2.Image = "rbxassetid://107279430040350"
+
+TextButton_9.Parent = Frame
+TextButton_9.BackgroundColor3 = Color3.fromRGB(40, 0, 30)
+TextButton_9.BackgroundTransparency = 0.300
+TextButton_9.BorderColor3 = Color3.fromRGB(255, 105, 180)
+TextButton_9.BorderSizePixel = 5
+TextButton_9.Position = UDim2.new(0.681192636, 0, 0.0963350013, 0)
+TextButton_9.Size = UDim2.new(0, 115, 0, 51)
+TextButton_9.Font = Enum.Font.Creepster
+TextButton_9.Text = "Spam MSGS"
+TextButton_9.TextColor3 = Color3.fromRGB(255, 105, 180)
+TextButton_9.TextSize = 25.000
+TextButton_9.TextWrapped = true
+
+TextButton_10.Parent = Frame
+TextButton_10.BackgroundColor3 = Color3.fromRGB(40, 0, 30)
+TextButton_10.BackgroundTransparency = 0.300
+TextButton_10.BorderColor3 = Color3.fromRGB(255, 105, 180)
+TextButton_10.BorderSizePixel = 5
+TextButton_10.Position = UDim2.new(0.681192636, 0, 0.282325327, 0)
+TextButton_10.Size = UDim2.new(0, 115, 0, 51)
+TextButton_10.Font = Enum.Font.Creepster
+TextButton_10.Text = "Button 10"
+TextButton_10.TextColor3 = Color3.fromRGB(255, 105, 180)
+TextButton_10.TextSize = 30.000
+TextButton_10.TextWrapped = true
+
+TextButton_11.Parent = Frame
+TextButton_11.BackgroundColor3 = Color3.fromRGB(40, 0, 30)
+TextButton_11.BackgroundTransparency = 0.300
+TextButton_11.BorderColor3 = Color3.fromRGB(255, 105, 180)
+TextButton_11.BorderSizePixel = 5
+TextButton_11.Position = UDim2.new(0.681192636, 0, 0.470731139, 0)
+TextButton_11.Size = UDim2.new(0, 115, 0, 51)
+TextButton_11.Font = Enum.Font.Creepster
+TextButton_11.Text = "Button 11"
+TextButton_11.TextColor3 = Color3.fromRGB(255, 105, 180)
+TextButton_11.TextSize = 30.000
+TextButton_11.TextWrapped = true
+
+TextButton_12.Parent = Frame
+TextButton_12.BackgroundColor3 = Color3.fromRGB(40, 0, 30)
+TextButton_12.BackgroundTransparency = 0.300
+TextButton_12.BorderColor3 = Color3.fromRGB(255, 105, 180)
+TextButton_12.BorderSizePixel = 5
+TextButton_12.Position = UDim2.new(0.681192636, 0, 0.659136951, 0)
+TextButton_12.Size = UDim2.new(0, 115, 0, 51)
+TextButton_12.Font = Enum.Font.Creepster
+TextButton_12.Text = "Button 12"
+TextButton_12.TextColor3 = Color3.fromRGB(255, 105, 180)
+TextButton_12.TextSize = 30.000
+TextButton_12.TextWrapped = true
+
+-- Scripts:
+
+-- Açma / Kapama Tuşu Scripti
+local function ToggleScript()
+	ToggleButton.MouseButton1Click:Connect(function()
+		Frame.Visible = not Frame.Visible
+	end)
 end
+coroutine.wrap(ToggleScript)()
 
--- Görsel ID (Görseldeki ID: 1000101913)[span_1](start_span)[span_1](end_span)
-local assetId = "1000101913"
+local function WZYB_fake_script() -- Frame.Drag 
+	local script = Instance.new('LocalScript', Frame)
 
--- === 1. SKYBOX BUTONU ===
-createButton("Apply Skybox", 5, 5, function()
-	local lighting = game:GetService("Lighting")
-	for _, child in ipairs(lighting:GetChildren()) do
-		if child:IsA("Sky") or child:IsA("Atmosphere") then
-			child:Destroy()
-		end
+	local UIS = game:GetService('UserInputService')
+	local frame = script.Parent
+	local dragToggle = nil
+	local dragSpeed = 0.25
+	local dragStart = nil
+	local startPos = nil
+	
+	local function updateInput(input)
+		local delta = input.Position - dragStart
+		local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
+			startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+		game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
 	end
-	local sky = Instance.new("Sky")
-	sky.Name = "PaxSky"
-	local tex = "http://www.roblox.com/asset/?id=" .. assetId
-	sky.SkyboxBk = tex
-	sky.SkyboxDn = tex
-	sky.SkyboxFt = tex
-	sky.SkyboxLf = tex
-	sky.SkyboxRt = tex
-	sky.SkyboxUp = tex
-	sky.Parent = lighting
-end)
+	
+	frame.InputBegan:Connect(function(input)
+		if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
+			dragToggle = true
+			dragStart = input.Position
+			startPos = frame.Position
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragToggle = false
+				end
+			end)
+		end
+	end)
+	
+	UIS.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			if dragToggle then
+				updateInput(input)
+			end
+		end
+	end)
+end
+coroutine.wrap(WZYB_fake_script)()
 
--- === 2. DECAL SPAM BUTONU (F3X SyncAPI Entegrasyonlu) ===
-createButton("Apply Decal", 145, 5, function()
+local function BEWELAO_fake_script() -- TextButton.LocalScript (Sky)
+	local script = Instance.new('LocalScript', TextButton)
+
+	local texId = "107279430040350"
+	
+	local ReplicatedStorage = game:GetService("ReplicatedStorage")
+	local RequestCommand = ReplicatedStorage:WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+	RequestCommand:InvokeServer(";fogcolor black ;unfog ;time 5.7")
+	
+	local player = game.Players.LocalPlayer
+	local char = player.Character or player.CharacterAdded:Wait()
 	local tool
-	for _, v in ipairs(player:GetDescendants()) do
+	
+	for _,v in ipairs(player:GetDescendants()) do
 		if v.Name == "SyncAPI" then
 			tool = v.Parent
 			break
 		end
 	end
+	
 	if not tool then
-		for _, v in ipairs(game.ReplicatedStorage:GetDescendants()) do
+		for _,v in ipairs(game.ReplicatedStorage:GetDescendants()) do
 			if v.Name == "SyncAPI" then
 				tool = v.Parent
 				break
 			end
 		end
 	end
+	
 	if not tool then return end
 	
 	local remote = tool.SyncAPI.ServerEndpoint
-	local function invoke(args)
+	
+	local function _(args)
 		remote:InvokeServer(unpack(args))
 	end
 	
-	for _, v in ipairs(workspace:GetDescendants()) do
-		if v:IsA("BasePart") then
-			task.spawn(function()
-				invoke({"SetLocked", {v}, false})
-				for _, face in ipairs({Enum.NormalId.Front, Enum.NormalId.Back, Enum.NormalId.Left, Enum.NormalId.Right, Enum.NormalId.Top, Enum.NormalId.Bottom}) do
-					invoke({"CreateTextures", {{Part = v, Face = face, TextureType = "Decal"}}})
-					invoke({"SyncTexture", {{Part = v, Face = face, TextureType = "Decal", Texture = "rbxassetid://" .. assetId}}})
-				end
-			end)
-		end
+	local function CreatePart(cf,parent)
+		_({"CreatePart","Normal",cf,parent})
 	end
-end)
-
--- === 3. BTOOLS ===
-createButton("Btools", 285, 5, function()
-	local btools = Instance.new("HopperBin")
-	btools.BinType = Enum.BinType.Hammer
-	btools.Parent = player.Backpack
-	local btools2 = Instance.new("HopperBin")
-	btools2.BinType = Enum.BinType.Clone
-	btools2.Parent = player.Backpack
-end)
-
--- === 4. UNANCHOR ALL ===
-createButton("Unanchor All", 425, 5, function()
-	for _, v in ipairs(workspace:GetDescendants()) do
-		if v:IsA("BasePart") then
-			v.Anchored = false
-		end
+	
+	local function SetName(part,name)
+		_({"SetName",{part},name})
 	end
-end)
-
--- === 5. BASEPLATE ===
-createButton("Baseplate", 5, 55, function()
-	local bp = Instance.new("Part")
-	bp.Size = Vector3.new(1000, 1, 1000)
-	bp.Position = Vector3.new(0, 0, 0)
-	bp.Anchored = true
-	bp.BrickColor = BrickColor.new("Bright pink")
-	bp.Parent = workspace
-end)
-
--- === 6. FIRE EFFECT ===
-createButton("Fire Effect", 145, 55, function()
-	for _, v in ipairs(workspace:GetDescendants()) do
-		if v:IsA("BasePart") then
-			Instance.new("Fire", v)
-		end
+	
+	local function AddMesh(part)
+		_({"CreateMeshes",{{Part=part}}})
 	end
-end)
-
--- === 7. DISCO FOG ===
-createButton("Disco Fog", 285, 55, function()
-	task.spawn(function()
-		local lighting = game:GetService("Lighting")
-		lighting.FogEnabled = true
-		while true do
-			lighting.FogColor = Color3.fromRGB(math.random(0,255), math.random(0,255), math.random(0,255))
-			task.wait(0.5)
-		end
-	end)
-end)
-
--- MÜZİK BUTONLARI FONKSİYONU
-local function createMusicBtn(name, id, pitch, x, y)
-	local btn = Instance.new("TextButton")
-	btn.Parent = scrollingFrame
-	btn.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-	btn.BorderColor3 = Color3.fromRGB(255, 105, 180)
-	btn.BorderSizePixel = 1
-	btn.Position = UDim2.new(0, x, 0, y)
-	btn.Size = UDim2.new(0, 130, 0, 40)
-	btn.Font = Enum.Font.SourceSans
-	btn.Text = name
-	btn.TextColor3 = Color3.fromRGB(255, 255, 255)
-	btn.TextSize = 15
-	btn.TextWrapped = true
-
-	btn.MouseButton1Click:Connect(function()
-		local hdAdmin = replicatedStorage:FindFirstChild("HDAdminClient") or replicatedStorage:FindFirstChild("HDAdminHDClient")
-		if hdAdmin and hdAdmin:FindFirstChild("Signals") and hdAdmin.Signals:FindFirstChild("RequestCommand") then
-			hdAdmin.Signals.RequestCommand:InvokeServer(";music " .. tostring(id))
-			if pitch then
-				hdAdmin.Signals.RequestCommand:InvokeServer(";pitch " .. tostring(pitch))
+	
+	local function SetMesh(part,id)
+		_({"SyncMesh",{{Part=part,MeshId="rbxassetid://"..id}}})
+	end
+	
+	local function SetTexture(part,id)
+		_({"SyncMesh",{{Part=part,TextureId="rbxassetid://"..id}}})
+	end
+	
+	local function MeshResize(part,size)
+		_({"SyncMesh",{{Part=part,Scale=size}}})
+	end
+	
+	local function SetVertexColor(part,vec)
+		_({"SyncMesh",{{Part=part,VertexColor=vec}}})
+	end
+	
+	local function SetLocked(part,bool)
+		_({"SetLocked",{part},bool})
+	end
+	
+	local function SetMaterial(part,mat)
+		_({"SyncMaterial",{{Part=part,Material=mat}}})
+	end
+	
+	local function SetCollision(part,bool)
+		_({"SyncCollision",{{Part=part,CanCollide=bool}}})
+	end
+	
+	local function CreatePointLight(part)
+		_({"CreateLights",{{Part=part,LightType="PointLight"}}})
+	end
+	
+	local function SyncPointLight(part,brightness,range)
+		_({"SyncLighting",{{Part=part,LightType="PointLight",Brightness=brightness,Range=range}}})
+	end
+	
+	local function Sky(id)
+		local pos = Vector3.new(0,100,0)
+		CreatePart(CFrame.new(pos),workspace)
+	
+		for _,v in ipairs(workspace:GetDescendants()) do
+			if v:IsA("BasePart")
+				and not v:IsDescendantOf(char)
+				and math.floor(v.Position.X) == 0
+				and math.floor(v.Position.Y) == 100
+				and math.floor(v.Position.Z) == 0 then
+	
+				SetName(v,"Sky")
+				AddMesh(v)
+				SetMesh(v,"111891702759441")
+				SetTexture(v,id)
+				MeshResize(v,Vector3.new(1000,1000,1000))
+				SetVertexColor(v,Vector3.new(2.5,2.5,2.5))
+				SetMaterial(v,"Neon")
+				SetCollision(v,false)
+				CreatePointLight(v)
+				SyncPointLight(v,5,8)
+				SetLocked(v,true)
 			end
-			hdAdmin.Signals.RequestCommand:InvokeServer(";volume inf")
 		end
+	end
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		Sky(texId)
+	end)
+end
+coroutine.wrap(BEWELAO_fake_script)()
+
+local function applyDecalScript(button, decalId)
+	local script = Instance.new('LocalScript', button)
+
+	script.Parent.MouseButton1Click:Connect(function()
+		local player = game.Players.LocalPlayer
+		local tool
+		for i,v in player:GetDescendants() do
+			if v.Name == "SyncAPI" then
+				tool = v.Parent
+			end
+		end
+		for i,v in game.ReplicatedStorage:GetDescendants() do
+			if v.Name == "SyncAPI" then
+				tool = v.Parent
+			end
+		end
+		
+		if not tool then return end
+		
+		local remote = tool.SyncAPI.ServerEndpoint
+		local function _(args)
+			remote:InvokeServer(unpack(args))
+		end
+		
+		local function SetLocked(part,boolean)
+			_({"SetLocked", {part}, boolean})
+		end
+		
+		local function SpawnDecal(part,side)
+			_({"CreateTextures", {{["Part"] = part, ["Face"] = side, ["TextureType"] = "Decal"}}})
+		end
+		
+		local function AddDecal(part,asset,side)
+			_({"SyncTexture", {{["Part"] = part, ["Face"] = side, ["TextureType"] = "Decal", ["Texture"] = "rbxassetid://".. asset}}})
+		end
+		
+		for i,v in game.workspace:GetDescendants() do
+			if v:IsA("BasePart") then
+				task.spawn(function()
+					SetLocked(v,false)
+					local faces = {
+						Enum.NormalId.Front, 
+						Enum.NormalId.Back, 
+						Enum.NormalId.Right, 
+						Enum.NormalId.Left, 
+						Enum.NormalId.Bottom, 
+						Enum.NormalId.Top
+					}
+					for _, face in ipairs(faces) do
+						SpawnDecal(v, face)
+						AddDecal(v, decalId, face)
+					end
+				end)
+			end
+		end 
 	end)
 end
 
--- Müzik Listesi
-createMusicBtn("theme v3", "1842652230", 0.45, 425, 55)
-createMusicBtn("better off alone", "138194554038974", 0.21, 5, 105)
-createMusicBtn("Electro sp00k", "99986264226275", 0.2, 145, 105)
-createMusicBtn("opening theme", "0x78189076c691", 0.3, 285, 105)
-createMusicBtn("Jumpstyle", "1839246711", nil, 425, 105)
-createMusicBtn("gui sound", "78973045684083", 0.3, 5, 155)
-createMusicBtn("WONGA", "100792696468630", 0.143, 145, 155)
-createMusicBtn("lois holy fuck", "105819456196233", 0.29, 285, 155)
-createMusicBtn("trump tank", "89293274845575", 0.25, 425, 155)
-createMusicBtn("butt hole", "130110858306036", 0.12, 5, 205)
-createMusicBtn("lavender town", "85789014973504", 0.16, 145, 205)
-createMusicBtn("trololo", "8389041427", nil, 285, 205)
-createMusicBtn("horror", "13061809", 0.2, 425, 205)
-createMusicBtn("TROLLED!!", "112626671704099", 0.2, 5, 255)
-createMusicBtn("black say?", "89441845224124", 0.168, 145, 255)
-createMusicBtn("SMOKE WEED", "6717030010", nil, 285, 255)
-createMusicBtn("Won't stop us", "1847661821", nil, 425, 255)
-createMusicBtn("cancan", "1840194801", 1.3, 5, 305)
-createMusicBtn("gangsta paradise", "6070263388", nil, 145, 305)
+applyDecalScript(TextButton_2, "107279430040350")
+applyDecalScript(TextButton_6, "107279430040350")
+applyDecalScript(TextButton_3, "107279430040350")
+applyDecalScript(TextButton_8, "107279430040350")
+
+-- Mesaj Spam Botu
+local function SpamScript()
+	local script = Instance.new('LocalScript', TextButton_9)
+	local spamming = false
+	local ReplicatedStorage = game:GetService("ReplicatedStorage")
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		spamming = not spamming
+		if spamming then
+			script.Parent.Text = "Spam: ON"
+			task.spawn(function()
+				while spamming do
+					pcall(function()
+						local RequestCommand = ReplicatedStorage:WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+						RequestCommand:InvokeServer(";m PAX HAS TAKEN OVER THIS SERVER")
+					end)
+					task.wait(3)
+				end
+			end)
+		else
+			script.Parent.Text = "Spam MSGS"
+		end
+	end)
+end
+coroutine.wrap(SpamScript)()
