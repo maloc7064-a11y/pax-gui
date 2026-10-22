@@ -10,7 +10,7 @@ local TextLabel = Instance.new("TextLabel")
 local TextLabel_2 = Instance.new("TextLabel")
 local ImageLabel = Instance.new("ImageLabel")
 
--- Arayüz Butonları (12 Ana Buton)
+-- Interface Buttons (12 Main Buttons)
 local TextButton = Instance.new("TextButton")      -- Sky
 local TextButton_2 = Instance.new("TextButton")    -- Decal
 local TextButton_3 = Instance.new("TextButton")    -- Decal 3
@@ -26,13 +26,13 @@ local TextButton_10 = Instance.new("TextButton")   -- Hat
 local TextButton_11 = Instance.new("TextButton")   -- Outfit
 local TextButton_12 = Instance.new("TextButton")   -- John Doe
 
--- YENİ: GUI İçerisinde Yer Alan Spam Butonu (`spamBtn`)
+-- NEW: Spam Button Inside GUI (`spamBtn`)
 local spamBtn = Instance.new("TextButton")
 
--- R6 Butonu (Frame'in Dış Sağ Kenarına Yapışık)
+-- R6 Button (Attached to the Outer Right Edge of Frame)
 local r6 = Instance.new("TextButton")
 
--- MÜZİK BUTONLARI
+-- MUSIC BUTTONS
 local music = Instance.new("TextButton")
 local musicbypas = Instance.new("TextButton")
 local musicbypas2 = Instance.new("TextButton")
@@ -53,7 +53,7 @@ f3xv1.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 f3xv1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 f3xv1.ResetOnSpawn = false
 
--- Mobil İçin Açma / Kapama Tuşu (Sol Üst)
+-- Open / Close Button for Mobile (Top Left)
 ToggleButton.Parent = f3xv1
 ToggleButton.BackgroundColor3 = Color3.fromRGB(40, 0, 30)
 ToggleButton.BorderColor3 = Color3.fromRGB(255, 105, 180)
@@ -65,7 +65,7 @@ ToggleButton.Text = "PAX"
 ToggleButton.TextColor3 = Color3.fromRGB(255, 105, 180)
 ToggleButton.TextSize = 28.000
 
--- Ana Frame (Tam Ortada)
+-- Main Frame (Center)
 Frame.Parent = f3xv1
 Frame.BackgroundColor3 = Color3.fromRGB(20, 0, 15)
 Frame.BorderColor3 = Color3.fromRGB(255, 105, 180)
@@ -106,7 +106,7 @@ ImageLabel.Size = UDim2.new(0, 436, 0, 337)
 ImageLabel.ZIndex = 0
 ImageLabel.Image = "rbxassetid://107279430040350"
 
--- Standart Özellik Butonları
+-- Standard Feature Buttons
 TextButton.Parent = Frame
 TextButton.BackgroundColor3 = Color3.fromRGB(40, 0, 30)
 TextButton.BackgroundTransparency = 0.300
@@ -220,7 +220,7 @@ ImageLabel_2.Size = UDim2.new(0, 100, 0, 100)
 ImageLabel_2.ZIndex = 2
 ImageLabel_2.Image = "rbxassetid://107279430040350"
 
--- Sağ Sütun Butonları
+-- Right Column Buttons
 message.Name = "message"
 message.Parent = Frame
 message.BackgroundColor3 = Color3.fromRGB(40, 0, 30)
@@ -274,7 +274,7 @@ TextButton_12.TextColor3 = Color3.fromRGB(255, 105, 180)
 TextButton_12.TextSize = 25.000
 TextButton_12.TextWrapped = true
 
--- YENİ SPAM BUTONU (GUI İçinde, Sağ Sütun En Altta)
+-- NEW SPAM BUTTON (Inside GUI, Right Column Bottom)
 spamBtn.Name = "spamBtn"
 spamBtn.Parent = Frame
 spamBtn.BackgroundColor3 = Color3.fromRGB(40, 0, 30)
@@ -289,7 +289,7 @@ spamBtn.TextColor3 = Color3.fromRGB(255, 105, 180)
 spamBtn.TextSize = 22.000
 spamBtn.TextWrapped = true
 
--- Frame'in Dış Sağ Kenarına Yapışık R6 Butonu
+-- R6 Button Attached to Outer Right Edge of Frame
 r6.Name = "r6"
 r6.Parent = Frame
 r6.BackgroundColor3 = Color3.fromRGB(40, 0, 30)
@@ -304,7 +304,7 @@ r6.TextColor3 = Color3.fromRGB(255, 105, 180)
 r6.TextSize = 28.000
 r6.TextWrapped = true
 
--- Müzik Butonları
+-- Music Buttons
 local musicButtons = {music, musicbypas, musicbypas2, musicbypas3, musicbypas4, musicbypas5, musicbypas6, musicbypas7, musicbypas8, musicbypas9, musicbypas10, theme}
 local mNames = {"c00l music", "phonk", "rumble", "k00p", "jazz 2", "jazz 1", "Ka_a-x", "gangsta", "monster", "potion", "g00by", "theme"}
 
@@ -324,7 +324,7 @@ end
 
 -- Scripts:
 
--- Açma / Kapama Tuşu Scripti
+-- Toggle Script
 local function ToggleScript()
 	ToggleButton.MouseButton1Click:Connect(function()
 		Frame.Visible = not Frame.Visible
@@ -332,7 +332,7 @@ local function ToggleScript()
 end
 coroutine.wrap(ToggleScript)()
 
--- Sürükleme (Drag) Scripti
+-- Drag Script
 local function WZYB_fake_script()
 	local script = Instance.new('LocalScript', Frame)
 	local UIS = game:GetService('UserInputService')
@@ -372,7 +372,7 @@ local function WZYB_fake_script()
 end
 coroutine.wrap(WZYB_fake_script)()
 
--- Sky Scripti
+-- Sky Script
 local function BEWELAO_fake_script()
 	local script = Instance.new('LocalScript', TextButton)
 	local texId = "107279430040350"
@@ -488,7 +488,7 @@ local function BEWELAO_fake_script()
 end
 coroutine.wrap(BEWELAO_fake_script)()
 
--- Ortak Decal Fonksiyonu
+-- Common Decal Function
 local function applyDecalScript(button, decalId)
 	local script = Instance.new('LocalScript', button)
 
@@ -552,7 +552,7 @@ applyDecalScript(TextButton_6, "107279430040350")
 applyDecalScript(TextButton_3, "107279430040350")
 applyDecalScript(TextButton_8, "107279430040350")
 
--- Rainbow All Scripti (TextButton_4)
+-- Rainbow All Script (TextButton_4)
 local function RainbowAllScript()
 	local script = Instance.new('LocalScript', TextButton_4)
 
@@ -566,7 +566,7 @@ local function RainbowAllScript()
 end
 coroutine.wrap(RainbowAllScript)()
 
--- HD Admin Komut Butonları
+-- HD Admin Command Buttons
 local function addHDCommand(button, cmd)
 	local script = Instance.new('LocalScript', button)
 	local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -584,7 +584,7 @@ addHDCommand(TextButton_7, ";removeaccessories")
 addHDCommand(TextButton_10, ";hat me 18196403126")
 addHDCommand(TextButton_11, ";shirt me 100276101149100 ;pants me 109662040845019")
 
--- Server Message Butonu (message)
+-- Server Message Button (message)
 local function ServerMsgScript()
 	local script = Instance.new('LocalScript', message)
 	local ReplicatedStorage = game:GetService("ReplicatedStorage")
