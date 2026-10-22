@@ -596,4 +596,4 @@ local function ServerMsgScript()
 				local RequestCommand = ReplicatedStorage.HDAdminHDClient.Signals.RequestCommandSilent
 				RequestCommand:InvokeServer(";m " .. text)
 			else
-				local chatEvents = ReplicatedStorage:Fin
+				local chatEvents = ReplicatedStorage:FindFirstChild("DefaultChatSystemCha
