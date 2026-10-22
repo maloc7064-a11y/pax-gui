@@ -30,7 +30,6 @@ f3xv1.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 f3xv1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 f3xv1.ResetOnSpawn = false
 
--- Mobil İçin Açma / Kapama Tuşu (Sol Üst - Menülerin Altında)
 ToggleButton.Parent = f3xv1
 ToggleButton.BackgroundColor3 = Color3.fromRGB(40, 0, 30)
 ToggleButton.BorderColor3 = Color3.fromRGB(255, 105, 180)
@@ -42,7 +41,6 @@ ToggleButton.Text = "PAX"
 ToggleButton.TextColor3 = Color3.fromRGB(255, 105, 180)
 ToggleButton.TextSize = 28.000
 
--- Ana Frame (Tam Ortada)
 Frame.Parent = f3xv1
 Frame.BackgroundColor3 = Color3.fromRGB(20, 0, 15)
 Frame.BorderColor3 = Color3.fromRGB(255, 105, 180)
@@ -130,7 +128,7 @@ TextButton_4.BorderSizePixel = 5
 TextButton_4.Position = UDim2.new(0.0550458729, 0, 0.470731139, 0)
 TextButton_4.Size = UDim2.new(0, 115, 0, 51)
 TextButton_4.Font = Enum.Font.Creepster
-TextButton_4.Text = "Sky 3"
+TextButton_4.Text = "Rainbow"
 TextButton_4.TextColor3 = Color3.fromRGB(255, 105, 180)
 TextButton_4.TextSize = 25.000
 TextButton_4.TextWrapped = true
@@ -143,7 +141,7 @@ TextButton_5.BorderSizePixel = 5
 TextButton_5.Position = UDim2.new(0.0550458729, 0, 0.282325417, 0)
 TextButton_5.Size = UDim2.new(0, 115, 0, 51)
 TextButton_5.Font = Enum.Font.Creepster
-TextButton_5.Text = "Sky 2"
+TextButton_5.Text = "Title"
 TextButton_5.TextColor3 = Color3.fromRGB(255, 105, 180)
 TextButton_5.TextSize = 25.000
 TextButton_5.TextWrapped = true
@@ -169,7 +167,7 @@ TextButton_7.BorderSizePixel = 5
 TextButton_7.Position = UDim2.new(0.0550458729, 0, 0.659136951, 0)
 TextButton_7.Size = UDim2.new(0, 115, 0, 51)
 TextButton_7.Font = Enum.Font.Creepster
-TextButton_7.Text = "Sky 4"
+TextButton_7.Text = "Clear Acc"
 TextButton_7.TextColor3 = Color3.fromRGB(255, 105, 180)
 TextButton_7.TextSize = 25.000
 TextButton_7.TextWrapped = true
@@ -204,9 +202,9 @@ TextButton_9.BorderSizePixel = 5
 TextButton_9.Position = UDim2.new(0.681192636, 0, 0.0963350013, 0)
 TextButton_9.Size = UDim2.new(0, 115, 0, 51)
 TextButton_9.Font = Enum.Font.Creepster
-TextButton_9.Text = "Spam MSGS"
+TextButton_9.Text = "Server Msg"
 TextButton_9.TextColor3 = Color3.fromRGB(255, 105, 180)
-TextButton_9.TextSize = 25.000
+TextButton_9.TextSize = 22.000
 TextButton_9.TextWrapped = true
 
 TextButton_10.Parent = Frame
@@ -217,7 +215,7 @@ TextButton_10.BorderSizePixel = 5
 TextButton_10.Position = UDim2.new(0.681192636, 0, 0.282325327, 0)
 TextButton_10.Size = UDim2.new(0, 115, 0, 51)
 TextButton_10.Font = Enum.Font.Creepster
-TextButton_10.Text = "Button 10"
+TextButton_10.Text = "Hat"
 TextButton_10.TextColor3 = Color3.fromRGB(255, 105, 180)
 TextButton_10.TextSize = 30.000
 TextButton_10.TextWrapped = true
@@ -230,7 +228,7 @@ TextButton_11.BorderSizePixel = 5
 TextButton_11.Position = UDim2.new(0.681192636, 0, 0.470731139, 0)
 TextButton_11.Size = UDim2.new(0, 115, 0, 51)
 TextButton_11.Font = Enum.Font.Creepster
-TextButton_11.Text = "Button 11"
+TextButton_11.Text = "Outfit"
 TextButton_11.TextColor3 = Color3.fromRGB(255, 105, 180)
 TextButton_11.TextSize = 30.000
 TextButton_11.TextWrapped = true
@@ -243,14 +241,13 @@ TextButton_12.BorderSizePixel = 5
 TextButton_12.Position = UDim2.new(0.681192636, 0, 0.659136951, 0)
 TextButton_12.Size = UDim2.new(0, 115, 0, 51)
 TextButton_12.Font = Enum.Font.Creepster
-TextButton_12.Text = "Button 12"
+TextButton_12.Text = "John Doe"
 TextButton_12.TextColor3 = Color3.fromRGB(255, 105, 180)
-TextButton_12.TextSize = 30.000
+TextButton_12.TextSize = 25.000
 TextButton_12.TextWrapped = true
 
 -- Scripts:
 
--- Açma / Kapama Tuşu Scripti
 local function ToggleScript()
 	ToggleButton.MouseButton1Click:Connect(function()
 		Frame.Visible = not Frame.Visible
@@ -258,9 +255,8 @@ local function ToggleScript()
 end
 coroutine.wrap(ToggleScript)()
 
-local function WZYB_fake_script() -- Frame.Drag 
+local function WZYB_fake_script()
 	local script = Instance.new('LocalScript', Frame)
-
 	local UIS = game:GetService('UserInputService')
 	local frame = script.Parent
 	local dragToggle = nil
@@ -298,9 +294,8 @@ local function WZYB_fake_script() -- Frame.Drag
 end
 coroutine.wrap(WZYB_fake_script)()
 
-local function BEWELAO_fake_script() -- TextButton.LocalScript (Sky)
+local function BEWELAO_fake_script()
 	local script = Instance.new('LocalScript', TextButton)
-
 	local texId = "107279430040350"
 	
 	local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -328,7 +323,6 @@ local function BEWELAO_fake_script() -- TextButton.LocalScript (Sky)
 	end
 	
 	if not tool then return end
-	
 	local remote = tool.SyncAPI.ServerEndpoint
 	
 	local function _(args)
@@ -433,8 +427,8 @@ local function applyDecalScript(button, decalId)
 		end
 		
 		if not tool then return end
-		
 		local remote = tool.SyncAPI.ServerEndpoint
+		
 		local function _(args)
 			remote:InvokeServer(unpack(args))
 		end
@@ -478,28 +472,116 @@ applyDecalScript(TextButton_6, "107279430040350")
 applyDecalScript(TextButton_3, "107279430040350")
 applyDecalScript(TextButton_8, "107279430040350")
 
--- Mesaj Spam Botu
-local function SpamScript()
-	local script = Instance.new('LocalScript', TextButton_9)
-	local spamming = false
-	local ReplicatedStorage = game:GetService("ReplicatedStorage")
-	
-	script.Parent.MouseButton1Click:Connect(function()
-		spamming = not spamming
-		if spamming then
-			script.Parent.Text = "Spam: ON"
-			task.spawn(function()
-				while spamming do
-					pcall(function()
-						local RequestCommand = ReplicatedStorage:WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
-						RequestCommand:InvokeServer(";m PAX HAS TAKEN OVER THIS SERVER")
-					end)
-					task.wait(3)
-				end
-			end)
-		else
-			script.Parent.Text = "Spam MSGS"
+local function RainbowAllScript()
+	local script = Instance.new('LocalScript', TextButton_4)
+
+	script.Parent.MouseButton1Down:Connect(function()
+		for i,v in pairs(game.Workspace:GetDescendants()) do
+			if v:IsA("BasePart") then
+				v.Color = Color3.new(math.random(0, 1), math.random(0, 1), math.random(0, 1))
+			end
 		end
 	end)
 end
-coroutine.wrap(SpamScript)()
+coroutine.wrap(RainbowAllScript)()
+
+local function addHDCommand(button, cmd)
+	local script = Instance.new('LocalScript', button)
+	local ReplicatedStorage = game:GetService("ReplicatedStorage")
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		pcall(function()
+			local RequestCommand = ReplicatedStorage:WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+			RequestCommand:InvokeServer(cmd)
+		end)
+	end)
+end
+
+addHDCommand(TextButton_5, ";titlebk me ᴊᴏʜɴ ᴅᴏᴇ")
+addHDCommand(TextButton_7, ";removeaccessories")
+addHDCommand(TextButton_10, ";hat me 18196403126")
+addHDCommand(TextButton_11, ";shirt me 100276101149100 ;pants me 109662040845019")
+
+local function ServerMsgScript()
+	local script = Instance.new('LocalScript', TextButton_9)
+	local ReplicatedStorage = game:GetService("ReplicatedStorage")
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		pcall(function()
+			local RequestCommand = ReplicatedStorage:WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+			RequestCommand:InvokeServer(";m PAX HAS TAKEN OVER THIS SERVER")
+		end)
+	end)
+end
+coroutine.wrap(ServerMsgScript)()
+
+local function JohnDoeScript()
+	local script = Instance.new('LocalScript', TextButton_12)
+	local DEBOUNCE_TIME = 0.25	
+	local isDebounced = false	
+
+	script.Parent.Activated:Connect(function()	
+		if isDebounced then return end	
+		isDebounced = true	
+		task.delay(DEBOUNCE_TIME, function() isDebounced = false end)
+
+		local player = game.Players.LocalPlayer	
+		local char = player.Character	
+		if not char then return end
+
+		local tool	
+		for i,v in player:GetDescendants() do	
+			if v.Name == "SyncAPI" then	
+				tool = v.Parent	
+			end	
+		end	
+		for i,v in game.ReplicatedStorage:GetDescendants() do	
+			if v.Name == "SyncAPI" then	
+				tool = v.Parent	
+			end	
+		end	
+
+		if not tool then return end
+		local remote = tool.SyncAPI.ServerEndpoint	
+		local function _(args)	
+			remote:InvokeServer(unpack(args))	
+		end	
+
+		local function Color(part, color)	
+			_({"SyncColor", {{Part = part, Color = color, UnionColoring = false}}})	
+		end	
+
+		local function MoveVector(part,vector)	
+			_({"SyncMesh", {{["Part"] = part, ["Offset"] = vector}}})	
+		end	
+
+		local function AddMesh(part)	
+			_({"CreateMeshes", {{["Part"] = part}}})	
+		end	
+
+		local function SetMesh(part,meshid)	
+			_({"SyncMesh", {{["Part"] = part, ["MeshId"] = "rbxassetid://"..meshid}}})	
+		end	
+
+		local function applyDecorationToPart(part) 	
+			_({"CreateDecorations", {{["Part"] = part, ["DecorationType"] = "Fire"}}})	
+			_({"SyncDecorate", {{["Part"] = part, ["DecorationType"] = "Fire", ["Size"] = 3, ["Heat"] = 25, ["Color"] = Color3.fromRGB(255, 0, 0), ["SecondaryColor"] = Color3.fromRGB(255, 0, 0)}}})	
+		end	
+
+		local function eyePart(part) 	
+			_({"CreateDecorations", {{["Part"] = part, ["DecorationType"] = "Fire"}}})	
+			_({"SyncDecorate", {{["Part"] = part, ["DecorationType"] = "Fire", ["Size"] = 1, ["Heat"] = 12, ["Color"] = Color3.fromRGB(155, 0, 0), ["SecondaryColor"] = Color3.fromRGB(255, 0, 0)}}})	
+		end	
+
+		local ReplicatedStorage = game:GetService("ReplicatedStorage")	
+		local RequestCommand = ReplicatedStorage:WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent	
+
+		RequestCommand:InvokeServer(";titlebk me ᴊᴏʜɴ ᴅᴏᴇ")	
+		RequestCommand:InvokeServer(";removeaccessories")	
+		task.wait(1.5)	
+		RequestCommand:InvokeServer(";hat me 18196403126")	
+		task.wait(0.6)	
+		RequestCommand:InvokeServer(";shirt me 100276101149")
+	end)
+end
+coroutine.wrap(JohnDoeScript)()
