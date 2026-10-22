@@ -9,19 +9,42 @@ local Frame = Instance.new("Frame")
 local TextLabel = Instance.new("TextLabel")
 local TextLabel_2 = Instance.new("TextLabel")
 local ImageLabel = Instance.new("ImageLabel")
-local TextButton = Instance.new("TextButton")
-local TextButton_2 = Instance.new("TextButton")
-local TextButton_3 = Instance.new("TextButton")
-local TextButton_4 = Instance.new("TextButton")
-local TextButton_5 = Instance.new("TextButton")
-local TextButton_6 = Instance.new("TextButton")
-local TextButton_7 = Instance.new("TextButton")
-local TextButton_8 = Instance.new("TextButton")
+
+-- Arayüz Butonları (12 Ana Buton)
+local TextButton = Instance.new("TextButton")      -- Sky
+local TextButton_2 = Instance.new("TextButton")    -- Decal
+local TextButton_3 = Instance.new("TextButton")    -- Decal 3
+local TextButton_4 = Instance.new("TextButton")    -- Rainbow
+local TextButton_5 = Instance.new("TextButton")    -- Title
+local TextButton_6 = Instance.new("TextButton")    -- Decal 2
+local TextButton_7 = Instance.new("TextButton")    -- Clear Acc
+local TextButton_8 = Instance.new("TextButton")    -- Decal 4
 local ImageLabel_2 = Instance.new("ImageLabel")
-local TextButton_9 = Instance.new("TextButton")
-local TextButton_10 = Instance.new("TextButton")
-local TextButton_11 = Instance.new("TextButton")
-local TextButton_12 = Instance.new("TextButton")
+
+local message = Instance.new("TextButton")         -- Server Msg
+local TextButton_10 = Instance.new("TextButton")   -- Hat
+local TextButton_11 = Instance.new("TextButton")   -- Outfit
+local TextButton_12 = Instance.new("TextButton")   -- John Doe
+
+-- YENİ: GUI İçerisinde Yer Alan Spam Butonu (`spamBtn`)
+local spamBtn = Instance.new("TextButton")
+
+-- R6 Butonu (Frame'in Dış Sağ Kenarına Yapışık)
+local r6 = Instance.new("TextButton")
+
+-- MÜZİK BUTONLARI
+local music = Instance.new("TextButton")
+local musicbypas = Instance.new("TextButton")
+local musicbypas2 = Instance.new("TextButton")
+local musicbypas3 = Instance.new("TextButton")
+local musicbypas4 = Instance.new("TextButton")
+local musicbypas5 = Instance.new("TextButton")
+local musicbypas6 = Instance.new("TextButton")
+local musicbypas7 = Instance.new("TextButton")
+local musicbypas8 = Instance.new("TextButton")
+local musicbypas9 = Instance.new("TextButton")
+local musicbypas10 = Instance.new("TextButton")
+local theme = Instance.new("TextButton")
 
 --Properties:
 
@@ -30,6 +53,7 @@ f3xv1.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 f3xv1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 f3xv1.ResetOnSpawn = false
 
+-- Mobil İçin Açma / Kapama Tuşu (Sol Üst)
 ToggleButton.Parent = f3xv1
 ToggleButton.BackgroundColor3 = Color3.fromRGB(40, 0, 30)
 ToggleButton.BorderColor3 = Color3.fromRGB(255, 105, 180)
@@ -41,6 +65,7 @@ ToggleButton.Text = "PAX"
 ToggleButton.TextColor3 = Color3.fromRGB(255, 105, 180)
 ToggleButton.TextSize = 28.000
 
+-- Ana Frame (Tam Ortada)
 Frame.Parent = f3xv1
 Frame.BackgroundColor3 = Color3.fromRGB(20, 0, 15)
 Frame.BorderColor3 = Color3.fromRGB(255, 105, 180)
@@ -81,6 +106,7 @@ ImageLabel.Size = UDim2.new(0, 436, 0, 337)
 ImageLabel.ZIndex = 0
 ImageLabel.Image = "rbxassetid://107279430040350"
 
+-- Standart Özellik Butonları
 TextButton.Parent = Frame
 TextButton.BackgroundColor3 = Color3.fromRGB(40, 0, 30)
 TextButton.BackgroundTransparency = 0.300
@@ -194,18 +220,20 @@ ImageLabel_2.Size = UDim2.new(0, 100, 0, 100)
 ImageLabel_2.ZIndex = 2
 ImageLabel_2.Image = "rbxassetid://107279430040350"
 
-TextButton_9.Parent = Frame
-TextButton_9.BackgroundColor3 = Color3.fromRGB(40, 0, 30)
-TextButton_9.BackgroundTransparency = 0.300
-TextButton_9.BorderColor3 = Color3.fromRGB(255, 105, 180)
-TextButton_9.BorderSizePixel = 5
-TextButton_9.Position = UDim2.new(0.681192636, 0, 0.0963350013, 0)
-TextButton_9.Size = UDim2.new(0, 115, 0, 51)
-TextButton_9.Font = Enum.Font.Creepster
-TextButton_9.Text = "Server Msg"
-TextButton_9.TextColor3 = Color3.fromRGB(255, 105, 180)
-TextButton_9.TextSize = 22.000
-TextButton_9.TextWrapped = true
+-- Sağ Sütun Butonları
+message.Name = "message"
+message.Parent = Frame
+message.BackgroundColor3 = Color3.fromRGB(40, 0, 30)
+message.BackgroundTransparency = 0.300
+message.BorderColor3 = Color3.fromRGB(255, 105, 180)
+message.BorderSizePixel = 5
+message.Position = UDim2.new(0.681192636, 0, 0.0963350013, 0)
+message.Size = UDim2.new(0, 115, 0, 51)
+message.Font = Enum.Font.Creepster
+message.Text = "Server Msg"
+message.TextColor3 = Color3.fromRGB(255, 105, 180)
+message.TextSize = 22.000
+message.TextWrapped = true
 
 TextButton_10.Parent = Frame
 TextButton_10.BackgroundColor3 = Color3.fromRGB(40, 0, 30)
@@ -246,8 +274,57 @@ TextButton_12.TextColor3 = Color3.fromRGB(255, 105, 180)
 TextButton_12.TextSize = 25.000
 TextButton_12.TextWrapped = true
 
+-- YENİ SPAM BUTONU (GUI İçinde, Sağ Sütun En Altta)
+spamBtn.Name = "spamBtn"
+spamBtn.Parent = Frame
+spamBtn.BackgroundColor3 = Color3.fromRGB(40, 0, 30)
+spamBtn.BackgroundTransparency = 0.300
+spamBtn.BorderColor3 = Color3.fromRGB(255, 105, 180)
+spamBtn.BorderSizePixel = 5
+spamBtn.Position = UDim2.new(0.681192636, 0, 0.835, 0)
+spamBtn.Size = UDim2.new(0, 115, 0, 51)
+spamBtn.Font = Enum.Font.Creepster
+spamBtn.Text = "Spam: OFF"
+spamBtn.TextColor3 = Color3.fromRGB(255, 105, 180)
+spamBtn.TextSize = 22.000
+spamBtn.TextWrapped = true
+
+-- Frame'in Dış Sağ Kenarına Yapışık R6 Butonu
+r6.Name = "r6"
+r6.Parent = Frame
+r6.BackgroundColor3 = Color3.fromRGB(40, 0, 30)
+r6.BackgroundTransparency = 0.300
+r6.BorderColor3 = Color3.fromRGB(255, 105, 180)
+r6.BorderSizePixel = 5
+r6.Position = UDim2.new(1, 0, 0.05, 0)
+r6.Size = UDim2.new(0, 75, 0, 45)
+r6.Font = Enum.Font.Creepster
+r6.Text = "R6"
+r6.TextColor3 = Color3.fromRGB(255, 105, 180)
+r6.TextSize = 28.000
+r6.TextWrapped = true
+
+-- Müzik Butonları
+local musicButtons = {music, musicbypas, musicbypas2, musicbypas3, musicbypas4, musicbypas5, musicbypas6, musicbypas7, musicbypas8, musicbypas9, musicbypas10, theme}
+local mNames = {"c00l music", "phonk", "rumble", "k00p", "jazz 2", "jazz 1", "Ka_a-x", "gangsta", "monster", "potion", "g00by", "theme"}
+
+for i, btn in ipairs(musicButtons) do
+	btn.Parent = Frame
+	btn.BackgroundColor3 = Color3.fromRGB(30, 0, 20)
+	btn.BorderColor3 = Color3.fromRGB(255, 105, 180)
+	btn.BorderSizePixel = 2
+	btn.Position = UDim2.new(1, 0, 0.05 * (i - 1) + 0.13, 0)
+	btn.Size = UDim2.new(0, 95, 0, 28)
+	btn.Font = Enum.Font.SourceSansBold
+	btn.Text = mNames[i]
+	btn.TextColor3 = Color3.fromRGB(255, 105, 180)
+	btn.TextSize = 13.000
+end
+
+
 -- Scripts:
 
+-- Açma / Kapama Tuşu Scripti
 local function ToggleScript()
 	ToggleButton.MouseButton1Click:Connect(function()
 		Frame.Visible = not Frame.Visible
@@ -255,6 +332,7 @@ local function ToggleScript()
 end
 coroutine.wrap(ToggleScript)()
 
+-- Sürükleme (Drag) Scripti
 local function WZYB_fake_script()
 	local script = Instance.new('LocalScript', Frame)
 	local UIS = game:GetService('UserInputService')
@@ -294,6 +372,7 @@ local function WZYB_fake_script()
 end
 coroutine.wrap(WZYB_fake_script)()
 
+-- Sky Scripti
 local function BEWELAO_fake_script()
 	local script = Instance.new('LocalScript', TextButton)
 	local texId = "107279430040350"
@@ -409,6 +488,7 @@ local function BEWELAO_fake_script()
 end
 coroutine.wrap(BEWELAO_fake_script)()
 
+-- Ortak Decal Fonksiyonu
 local function applyDecalScript(button, decalId)
 	local script = Instance.new('LocalScript', button)
 
@@ -472,6 +552,7 @@ applyDecalScript(TextButton_6, "107279430040350")
 applyDecalScript(TextButton_3, "107279430040350")
 applyDecalScript(TextButton_8, "107279430040350")
 
+-- Rainbow All Scripti (TextButton_4)
 local function RainbowAllScript()
 	local script = Instance.new('LocalScript', TextButton_4)
 
@@ -485,6 +566,7 @@ local function RainbowAllScript()
 end
 coroutine.wrap(RainbowAllScript)()
 
+-- HD Admin Komut Butonları
 local function addHDCommand(button, cmd)
 	local script = Instance.new('LocalScript', button)
 	local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -502,86 +584,16 @@ addHDCommand(TextButton_7, ";removeaccessories")
 addHDCommand(TextButton_10, ";hat me 18196403126")
 addHDCommand(TextButton_11, ";shirt me 100276101149100 ;pants me 109662040845019")
 
+-- Server Message Butonu (message)
 local function ServerMsgScript()
-	local script = Instance.new('LocalScript', TextButton_9)
+	local script = Instance.new('LocalScript', message)
 	local ReplicatedStorage = game:GetService("ReplicatedStorage")
 	
 	script.Parent.MouseButton1Click:Connect(function()
+		local text = "PAX HAS TAKEN OVER THIS SERVER"
 		pcall(function()
-			local RequestCommand = ReplicatedStorage:WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
-			RequestCommand:InvokeServer(";m PAX HAS TAKEN OVER THIS SERVER")
-		end)
-	end)
-end
-coroutine.wrap(ServerMsgScript)()
-
-local function JohnDoeScript()
-	local script = Instance.new('LocalScript', TextButton_12)
-	local DEBOUNCE_TIME = 0.25	
-	local isDebounced = false	
-
-	script.Parent.Activated:Connect(function()	
-		if isDebounced then return end	
-		isDebounced = true	
-		task.delay(DEBOUNCE_TIME, function() isDebounced = false end)
-
-		local player = game.Players.LocalPlayer	
-		local char = player.Character	
-		if not char then return end
-
-		local tool	
-		for i,v in player:GetDescendants() do	
-			if v.Name == "SyncAPI" then	
-				tool = v.Parent	
-			end	
-		end	
-		for i,v in game.ReplicatedStorage:GetDescendants() do	
-			if v.Name == "SyncAPI" then	
-				tool = v.Parent	
-			end	
-		end	
-
-		if not tool then return end
-		local remote = tool.SyncAPI.ServerEndpoint	
-		local function _(args)	
-			remote:InvokeServer(unpack(args))	
-		end	
-
-		local function Color(part, color)	
-			_({"SyncColor", {{Part = part, Color = color, UnionColoring = false}}})	
-		end	
-
-		local function MoveVector(part,vector)	
-			_({"SyncMesh", {{["Part"] = part, ["Offset"] = vector}}})	
-		end	
-
-		local function AddMesh(part)	
-			_({"CreateMeshes", {{["Part"] = part}}})	
-		end	
-
-		local function SetMesh(part,meshid)	
-			_({"SyncMesh", {{["Part"] = part, ["MeshId"] = "rbxassetid://"..meshid}}})	
-		end	
-
-		local function applyDecorationToPart(part) 	
-			_({"CreateDecorations", {{["Part"] = part, ["DecorationType"] = "Fire"}}})	
-			_({"SyncDecorate", {{["Part"] = part, ["DecorationType"] = "Fire", ["Size"] = 3, ["Heat"] = 25, ["Color"] = Color3.fromRGB(255, 0, 0), ["SecondaryColor"] = Color3.fromRGB(255, 0, 0)}}})	
-		end	
-
-		local function eyePart(part) 	
-			_({"CreateDecorations", {{["Part"] = part, ["DecorationType"] = "Fire"}}})	
-			_({"SyncDecorate", {{["Part"] = part, ["DecorationType"] = "Fire", ["Size"] = 1, ["Heat"] = 12, ["Color"] = Color3.fromRGB(155, 0, 0), ["SecondaryColor"] = Color3.fromRGB(255, 0, 0)}}})	
-		end	
-
-		local ReplicatedStorage = game:GetService("ReplicatedStorage")	
-		local RequestCommand = ReplicatedStorage:WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent	
-
-		RequestCommand:InvokeServer(";titlebk me ᴊᴏʜɴ ᴅᴏᴇ")	
-		RequestCommand:InvokeServer(";removeaccessories")	
-		task.wait(1.5)	
-		RequestCommand:InvokeServer(";hat me 18196403126")	
-		task.wait(0.6)	
-		RequestCommand:InvokeServer(";shirt me 100276101149")
-	end)
-end
-coroutine.wrap(JohnDoeScript)()
+			if ReplicatedStorage:FindFirstChild("HDAdminHDClient") then
+				local RequestCommand = ReplicatedStorage.HDAdminHDClient.Signals.RequestCommandSilent
+				RequestCommand:InvokeServer(";m " .. text)
+			else
+				local chatEvents = ReplicatedStorage:Fin
